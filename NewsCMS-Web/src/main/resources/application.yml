@@ -1,0 +1,54 @@
+# server
+server:
+  port: 9661
+
+# spring
+spring:
+  # application
+  application:
+    name: NewsNCMS-WebService
+  # datasource
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/news-cms?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: 123456
+  # redis
+  redis:
+    host: localhost
+    port: 6379
+  # thymeleaf
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+
+# springDoc
+springdoc:
+  # swagger-ui
+  swagger-ui:
+    display-request-duration: true
+    path: /swagger-ui.html
+    show-extensions: true
+    show-common-extensions: true
+  # api-docs
+  api-docs:
+    enabled: true
+    path: /api-docs
+    resolve-schema-properties: true
+    groups:
+      enabled: true
+  # actuator
+  show-actuator: true
+  # writer
+  writer-with-default-pretty-printer: true
+
+
