@@ -1,2 +1,5 @@
 # NewsCMS
-News Content Management System
+
+- **TITLE**: News Content Management System
+
+- **AUTHOR**: ZZAY
