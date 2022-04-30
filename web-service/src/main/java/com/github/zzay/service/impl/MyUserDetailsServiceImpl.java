@@ -1,9 +1,9 @@
-package com.github.zzay.service;
+package com.github.zzay.service.impl;
 
 import com.github.zzay.entity.Menu;
 import com.github.zzay.entity.Role;
 import com.github.zzay.entity.User;
-import com.github.zzay.mapper.UserInfoMapper;
+import com.github.zzay.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,18 +17,18 @@ import java.util.List;
 
 /**
  * @author zzay
- * @className MyUserDetailsService
- * @description MyUserDetailsService
+ * @className MyUserDetailsServiceImpl
+ * @description MyUserDetailsServiceImpl
  * @create 2022/04/30 13:30
  */
 @Service("userDetailsService")
-public class MyUserDetailsService implements UserDetailsService {
+public class MyUserDetailsServiceImpl implements UserDetailsService {
 
     /**
      * User Information Mapper
      */
     @Autowired
-    private UserInfoMapper userInfoMapper;
+    private UserMapper userMapper;
 
     /**
      * Load {@link UserDetails} with the given username, and conduct some other operations
@@ -39,13 +39,13 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // query for the users with the same username as the given one in database
-        User users = userInfoMapper.selectByUsername(username);
+        User users = userMapper.selectByUsername(username);
         if (users == null) {
-            throw new UsernameNotFoundException("用户名不存在！");
+            throw new UsernameNotFoundException("Username not found !");
         }
         // get role list and menu list of the user
-        List<Role> roleList = userInfoMapper.selectRoleByUserId(users.getId());
-        List<Menu> menuList = userInfoMapper.selectMenuByUserId(users.getId());
+        List<Role> roleList = userMapper.selectRoleByUserId(users.getId());
+        List<Menu> menuList = userMapper.selectMenuByUserId(users.getId());
         // authority list
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
         // role list

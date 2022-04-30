@@ -1,5 +1,6 @@
 package com.github.zzay.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.Hidden;
@@ -29,7 +30,7 @@ public class User implements Serializable {
     /**
      * ID (PK)
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     @Schema(name = "id", description = "用户唯一标识符")
     private Long id;
 

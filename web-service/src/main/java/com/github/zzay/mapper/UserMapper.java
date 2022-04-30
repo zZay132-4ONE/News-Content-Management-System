@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Repository
 @Mapper
-public interface UserInfoMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<User> {
 
     /**
      * Select the user with the given username

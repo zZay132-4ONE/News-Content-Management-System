@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Invalid Authorization</title>
+    <link rel = "stylesheet" th:href = "@{/css/bootstrap4.min.css}"/>
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/bootstrap4.min.js}"></script>
+</head>
+
+<body class="text-center">
+<div class="container" style="margin-top: 100px">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-7">
+            <div class="card" style="width: 60rem;">
+                <div class="card-body">
+                    <h2 class="card-title">Sorry, you do not have permissions to access this page !</h2>
+                    <p class="card-text">Please return to the dashboard, or contact the administrator for permissions !</p>
+                    <a th:href="@{/}" class="card-link">Return to dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

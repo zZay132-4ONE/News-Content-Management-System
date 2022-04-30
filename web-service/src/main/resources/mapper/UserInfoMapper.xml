@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.github.zzay.mapper.UserInfoMapper">
+<mapper namespace="com.github.zzay.mapper.UserMapper">
     <!-- User selectByUsername(String username); -->
     <select id="selectByUsername" resultType="com.github.zzay.entity.User">
         SELECT u.id, u.username, u.password

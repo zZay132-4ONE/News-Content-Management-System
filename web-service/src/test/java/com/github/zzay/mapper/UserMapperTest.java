@@ -12,45 +12,45 @@ import java.util.List;
 /**
  * @author zzay
  * @className UserInfoMapperTest
- * @description Test Class for {@link UserInfoMapper}
+ * @description Test Class for {@link UserMapper}
  * @create 2022/04/30 19:24
  */
 @SpringBootTest
-public class UserInfoMapperTest {
+public class UserMapperTest {
 
     /**
      * User Information Mapper
      */
     @Autowired
-    private UserInfoMapper userInfoMapper;
+    private UserMapper userMapper;
 
     /**
-     * Test for {@link UserInfoMapper#selectByUsername(String)}
+     * Test for {@link UserMapper#selectByUsername(String)}
      */
     @Test
     public void testSelectByUsername() {
         String username = "zzay";
-        User user = userInfoMapper.selectByUsername(username);
+        User user = userMapper.selectByUsername(username);
         System.out.println(user.toString());
     }
 
     /**
-     * Test for {@link UserInfoMapper#selectRoleByUserId(Long)}
+     * Test for {@link UserMapper#selectRoleByUserId(Long)}
      */
     @Test
     public void testSelectRoleByUserId() {
         Long userId = 1L;
-        List<Role> roleList = userInfoMapper.selectRoleByUserId(userId);
+        List<Role> roleList = userMapper.selectRoleByUserId(userId);
         System.out.println(roleList);
     }
 
     /**
-     * Test for {@link UserInfoMapper#selectMenuByUserId(Long)}
+     * Test for {@link UserMapper#selectMenuByUserId(Long)}
      */
     @Test
     public void testSelectMenuByUserId() {
         Long userId = 1L;
-        List<Menu> menuList = userInfoMapper.selectMenuByUserId(userId);
+        List<Menu> menuList = userMapper.selectMenuByUserId(userId);
         System.out.println(menuList);
     }
 

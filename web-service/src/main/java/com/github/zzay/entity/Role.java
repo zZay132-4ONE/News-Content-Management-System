@@ -1,5 +1,6 @@
 package com.github.zzay.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -31,7 +32,7 @@ public class Role implements Serializable {
     /**
      * ID (PK)
      */
-    @TableId
+    @TableId(type = IdType.AUTO)
     @Schema(name = "id", description = "角色唯一标识符")
     private Long id;
 

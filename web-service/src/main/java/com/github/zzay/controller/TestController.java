@@ -1,6 +1,12 @@
 package com.github.zzay.controller;
 
 import com.github.zzay.entity.User;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PostFilter;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,6 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/test")
+@Tag(name = "TestController", description = "测试操作相关接口")
 public class TestController {
 
     /**
@@ -28,6 +35,7 @@ public class TestController {
      * @return Response message
      */
     @GetMapping("/hello")
+    @Operation(summary = "测试Spring Security", description = "测试Spring Security：从数据库读取对应用户密码并校验", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
     public String hello() {
         return "hello spring security !";
     }
@@ -37,10 +45,11 @@ public class TestController {
      *
      * @return Response message
      */
-    @RequestMapping("/secure")
+    @GetMapping("/secured")
     @Secured({"ROLE_管理员"})
-    public String testSecure() {
-        return "test Secure";
+    @Operation(summary = "测试@Secured注解功能", description = "测试@Secured注解功能：说明问当前URL地址所需要的角色", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
+    public String testSecured() {
+        return "test Secured";
     }
 
     /**
@@ -48,8 +57,9 @@ public class TestController {
      *
      * @return Response message
      */
-    @RequestMapping("/preAuth")
+    @GetMapping("/preAuth")
     @PreAuthorize("hasAnyAuthority('system:admin')")
+    @Operation(summary = "测试@PreAuthorize注解功能", description = "测试@PreAuthorize注解功能：说明访问当前URL地址所需要的权限", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
     public String testPreAuth() {
         return "test preAuth";
     }
@@ -59,8 +69,9 @@ public class TestController {
      *
      * @return Response message
      */
-    @RequestMapping("/postFilter")
+    @GetMapping("/postFilter")
     @PostFilter("filterObject.username == zzay")
+    @Operation(summary = "测试@PostFilter注解功能", description = "测试@PostFilter注解功能：过滤经过校验后得到的内容", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
     public List<User> testPostFilter() {
         ArrayList<User> usersArrayList = new ArrayList<>();
         usersArrayList.add(new User(1L, "zzay", "123456"));
@@ -73,9 +84,10 @@ public class TestController {
      *
      * @return Response message
      */
-    @RequestMapping("/preFilter")
+    @GetMapping("/preFilter")
     @PreAuthorize("hasRole('ROLE_管理员')")
     @PreFilter(value = "filterObject.id % 2 == 0")
+    @Operation(summary = "测试@PreFilter注解功能", description = "测试@PreFilter注解功能：过滤经过校验前传入的内容", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
     public List<User> testPreFilter(List<User> list) {
         list.forEach(t -> {
             System.out.println(t.getId() + "\t" + t.getUsername());

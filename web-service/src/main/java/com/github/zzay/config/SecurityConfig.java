@@ -24,9 +24,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * White list of authentications
      */
     public static final String[] AUTH_WHITELIST = {
+            // basic
             "/",
+            "/*.html",
+            "/**/*.html",
+            "/**/*.css",
+            "/**/*.js",
+            "/favicon.ico",
+            "/swagger-ui.html",
+            "/swagger-ui/",
+            "/swagger-ui/*",
+            "/swagger-resources/**",
+            "/**/api-docs/**",
+            "/webjars/**",
+            // test
             "/test/hello",
-            "/user/login"
+            "/user/login",
+    };
+
+    /**
+     * Anonymous list of authentications
+     */
+    public static final String [] AUTH_ANONYMOUS_LIST = {
+            "/register",
+            "/user/register"
     };
 
     /**
@@ -62,12 +83,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout").logoutSuccessUrl("/login").permitAll()
             .and().authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers(AUTH_ANONYMOUS_LIST).anonymous()
                 .antMatchers("/findAll").hasRole("管理员")
                 .antMatchers("/find").hasAnyAuthority("menu:system")
                 .anyRequest().authenticated()
             .and().exceptionHandling()
-                .accessDeniedPage("/security/unauth")
-                .and().csrf().disable();
+                .accessDeniedPage("/unauthorized")
+            .and().csrf().disable();
     }
 
     /**
