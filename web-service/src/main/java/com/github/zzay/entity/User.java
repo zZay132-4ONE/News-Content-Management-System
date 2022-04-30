@@ -2,6 +2,7 @@ package com.github.zzay.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,101 +14,113 @@ import java.util.Date;
 /**
  * @author zzay
  * @className User
- * @description 用户实体
- * @create 2022/04/21 14:56
+ * @description User实体类
+ * @create 2022/04/30 13:23
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "sys_user")
+@TableName(value = "user")
 @Schema(name = "User", description = "用户实体")
 public class User implements Serializable {
 
     private static final long serialVersionUID = -6690897723869303541L;
 
     /**
-     * 主键
+     * ID (PK)
      */
     @TableId
     @Schema(name = "id", description = "用户唯一标识符")
     private Long id;
 
     /**
-     * 用户名
+     * Username
      */
     @Schema(name = "username", description = "用户名")
     private String username;
 
     /**
-     * 密码
+     * Password
      */
     @Schema(name = "password", description = "密码")
     private String password;
 
     /**
-     * 账号状态（0正常 1停用）
+     * Account status (normal: 0 / abandoned: 1)
      */
     @Schema(name = "status", description = "账号状态（0正常 1停用）")
     private String status;
 
     /**
-     * 邮箱
+     * Email address
      */
     @Schema(name = "email", description = "邮箱")
     private String email;
 
     /**
-     * 手机号
+     * Phone number
      */
     @Schema(name = "phone", description = "手机号")
     private String phone;
 
     /**
-     * 用户性别（0男，1女，2未知）
+     * Gender (Male: 0 / Female: 1 / Unknown: 2)
      */
     @Schema(name = "sex", description = "用户性别（0男，1女，2未知）")
     private String sex;
 
     /**
-     * 头像
+     * Avatar
      */
     @Schema(name = "avatar", description = "头像")
     private String avatar;
 
     /**
-     * 用户类型（0管理员，1普通用户）
+     * Creator
      */
-    @Schema(name = "userType", description = "用户类型（0管理员，1普通用户）")
-    private String userType;
-
-    /**
-     * 创建人
-     */
+    @Hidden
     @Schema(name = "createBy", description = "创建人")
     private Long createBy;
 
     /**
-     * 创建时间
+     * Created time
      */
+    @Hidden
     @Schema(name = "createTime", description = "创建时间")
     private Date createTime;
 
     /**
-     * 更新人
+     * Updater
      */
+    @Hidden
     @Schema(name = "updateBy", description = "更新人")
     private Long updateBy;
 
     /**
-     * 更新时间
+     * Updated time
      */
+    @Hidden
     @Schema(name = "updateTime", description = "更新时间")
     private Date updateTime;
 
     /**
-     * 删除标志（0代表未删除，1代表已删除）
+     * Delete flag (not deleted: 0 / deleted: 1)
      */
+    @Hidden
     @Schema(name = "delFlag", description = "删除标志（0代表未删除，1代表已删除）")
     private Integer delFlag;
+
+    /**
+     * Constructor
+     *
+     * @param id       ID
+     * @param username Username
+     * @param password Password
+     */
+    public User(Long id, String username, String password) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+    }
 
 }

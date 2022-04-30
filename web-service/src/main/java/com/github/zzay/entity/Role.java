@@ -14,74 +14,44 @@ import java.util.Date;
 
 /**
  * @author zzay
- * @className Menu
- * @description Menu
- * @create 2022/04/30 16:21
+ * @className Role
+ * @description Role实体类
+ * @create 2022/04/30 16:22
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@TableName(value = "menu")
-@Schema(name = "Menu", description = "菜单实体")
-public class Menu implements Serializable {
+@TableName(value = "role")
+@Schema(name = "Role", description = "角色实体")
+public class Role implements Serializable {
 
-    private static final long serialVersionUID = 51618427342448681L;
+    private static final long serialVersionUID = 4177942112824940331L;
 
     /**
      * ID (PK)
      */
     @TableId
-    @Schema(name = "id", description = "菜单唯一标识符")
+    @Schema(name = "id", description = "角色唯一标识符")
     private Long id;
 
     /**
      * Name
      */
-    @Schema(name = "name", description = "菜单名")
+    @Schema(name = "name", description = "角色名")
     private String name;
 
     /**
-     * URL
+     * 角色权限
      */
-    @Schema(name = "url", description = "路由地址")
-    private String url;
+    @Schema(name = "roleKey", description = "角色权限")
+    private String roleKey;
 
     /**
-     * Permission
+     * Role status (normal: 0 / abandoned: 1)
      */
-    @Schema(name = "permission", description = "权限标识")
-    private String permission;
-
-    /**
-     * Parent ID
-     */
-    @Schema(name = "parentid", description = "父菜单ID")
-    private Long parentid;
-
-    /**
-     * Component path
-     */
-    @Schema(name = "component", description = "组件路径")
-    private String component;
-
-    /**
-     * Menu visibility (Visible: 0 / Invisible: 1)
-     */
-    @Schema(name = "visible", description = "菜单状态（0显示 1隐藏）")
-    private String visible;
-
-    /**
-     * Menu status (normal: 0 / abandoned: 1)
-     */
-    @Schema(name = "status", description = "菜单状态（0正常 1停用）")
+    @Schema(name = "status", description = "角色状态（0正常 1停用）")
     private String status;
-
-    /**
-     * Icon
-     */
-    @Schema(name = "icon", description = "菜单图标")
-    private String icon;
 
     /**
      * Remark

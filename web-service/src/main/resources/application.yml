@@ -6,24 +6,20 @@ server:
 spring:
   # application
   application:
-    name: NewsNCMS-WebService
+    name: NewsCMS-WebService
   # datasource
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/news-cms?characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password: 123456
-  # redis
-  redis:
-    host: localhost
-    port: 6379
   # thymeleaf
   thymeleaf:
-    cache: false
-    encoding: UTF-8
-    mode: HTML5
     prefix: classpath:/templates/
     suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+    cache: false
     servlet:
       content-type: text/html
 
@@ -48,7 +44,7 @@ springdoc:
       enabled: true
   # actuator
   show-actuator: true
-  # writer
+  # writer with pretty printer
   writer-with-default-pretty-printer: true
 
 
