@@ -1,8 +1,8 @@
-# NewsCMS
+# News Content Management System
 
 [TOC]
 
->This project is a News Content Management System (NCMS) by Zzay, which includes some core functions such as checking news, publishing news, auditing news, editing news, deleting news, and some other basic functions.
+>This project is a News Content Management System (NCMS) by Zzay(19271169), which includes some core functions such as checking news, publishing news, editing news, auditing news, deleting news, and some other basic functions.
 
 # 1. Introductions
 
@@ -11,8 +11,8 @@
 - **Title:** News Content Management System
 - **Author:** ZZAY (19271169)
 - **Contact:** 
-  - [Gitee](https://gitee.com/zzay0132/NewsCMS)
-  - [GIthub](https://github.com/zZay132-4ONE/NewsCMS)
+  - [Gitee - NewCMS](https://gitee.com/zzay0132/NewsCMS)
+  - [GIthub - NewsCMS](https://github.com/zZay132-4ONE/NewsCMS)
 
 <br>
 
@@ -32,7 +32,7 @@
 
 - **Framework:**
   - **Backend:** `Springboot 2.6.6`
-  - **Frontend:** `Vue.js`
+  - **Frontend:** `(Vue.js)`
 - **Technologies:**
   - **Database Access:** `MyBatis-Plus 3.4.2`
   - **Authentication & Authorization:** `Spring Security 2.6.6`
