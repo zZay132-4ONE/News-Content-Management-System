@@ -47,7 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     public static final String [] AUTH_ANONYMOUS_LIST = {
             "/register",
-            "/user/register"
+            "/user/register",
+            "/login",
+            "/user/login"
     };
 
     /**
@@ -76,15 +78,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-//                .loginPage("login.html")
+                .loginPage("/login")
                 .loginProcessingUrl("/user/login")
-                .defaultSuccessUrl("/test/index").permitAll()
+                .defaultSuccessUrl("/index").permitAll()
             .and().logout()
-                .logoutUrl("/logout").logoutSuccessUrl("/login").permitAll()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login").permitAll()
             .and().authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers(AUTH_ANONYMOUS_LIST).anonymous()
-                .antMatchers("/findAll").hasRole("管理员")
+                .antMatchers("/findAll").hasRole("admin")
                 .antMatchers("/find").hasAnyAuthority("menu:system")
                 .anyRequest().authenticated()
             .and().exceptionHandling()

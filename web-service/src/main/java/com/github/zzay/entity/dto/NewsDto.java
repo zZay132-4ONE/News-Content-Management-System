@@ -23,6 +23,13 @@ public class NewsDto implements Serializable {
     private static final long serialVersionUID = -7900309316831067955L;
 
     /**
+     * ID
+     */
+    @TableId(type = IdType.AUTO)
+    @Schema(name = "id", description = "新闻唯一标识符")
+    private Integer id;
+
+    /**
      * Title
      */
     @Schema(name = "title", description = "新闻标题")

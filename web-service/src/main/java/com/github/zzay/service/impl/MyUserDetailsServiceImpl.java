@@ -4,6 +4,7 @@ import com.github.zzay.entity.Menu;
 import com.github.zzay.entity.Role;
 import com.github.zzay.entity.User;
 import com.github.zzay.mapper.UserMapper;
+import com.github.zzay.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,7 +23,7 @@ import java.util.List;
  * @create 2022/04/30 13:30
  */
 @Service("userDetailsService")
-public class MyUserDetailsServiceImpl implements UserDetailsService {
+public class MyUserDetailsServiceImpl implements MyUserDetailsService {
 
     /**
      * User Information Mapper

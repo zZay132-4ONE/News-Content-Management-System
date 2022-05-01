@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+<!-- navigation bar -->
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="hidden-xs">
+            <div class="navbar-header">
+                <a th:href="@{/}" class="navbar-brand"></a>
+            </div>
+            <label id="toggle-label" class="visible-xs-inline-block" for="toggle-checkbox">MENU</label>
+            <input class="hidden" id="toggle-checkbox" type="checkbox">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a th:href="@{/}">Dashboard</a>
+                </li>
+                <li>
+                    <a th:href="@{/news/management}">Management</a>
+                </li>
+                <li>
+                    <a th:href="@{/news/create}">Publish News</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a th:href="@{/logout}">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- main container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-7">
+            <div th:each="news:${list}" class="news-list">
+                <div class="news-list-item clearfix">
+                    <div class="col-xs-7">
+                        <a th:href="@{'/news/getById/'+${news.id}}" class="title">
+                            <span th:text="${news.title}"></span>
+                        </a>
+                        <span th:text="${news.description}"></span>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li th:each="i:${#numbers.sequence(1,page)}" class="page-item"
+                        th:classappend="${i == pageNum} ? 'active' : '' ">
+                        <a class="page-link" th:href="@{'/?'+'page='+${i}}" th:text="${i}"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+</body>
+</html>

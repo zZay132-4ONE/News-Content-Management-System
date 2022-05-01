@@ -2,8 +2,6 @@ package com.github.zzay.controller;
 
 import com.github.zzay.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpHeaders;
@@ -46,7 +44,7 @@ public class TestController {
      * @return Response message
      */
     @GetMapping("/secured")
-    @Secured({"ROLE_管理员"})
+    @Secured({"ROLE_admin"})
     @Operation(summary = "测试@Secured注解功能", description = "测试@Secured注解功能：说明问当前URL地址所需要的角色", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
     public String testSecured() {
         return "test Secured";

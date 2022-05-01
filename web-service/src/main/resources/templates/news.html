@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>News</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a th:href="@{/}" class="navbar-brand"></a>
+        </div>
+        <label id="toggle-label" class="visible-xs-inline-block" for="toggle-checkbox">MENU</label>
+        <input class="hidden" id="toggle-checkbox" type="checkbox">
+        <div class="hidden-xs">
+            <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{/}">Dashboard</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/logout}">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-8">
+        <h1 class="news-title" th:text="${news.title}"></h1>
+        <div class="news-content">
+            <blockquote>
+                <p th:text="${news.description}"></p>
+            </blockquote>
+            <div th:text="${news.contents}"></div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="side-bar-card">
+            <div class="card-title">Hot Spots</div>
+            <div class="card-body">
+                <div class="list">
+                    <div class="item clearfix">
+                        <div class="col-xs-5 no-padding-h">
+                            <img src="https://dummyimage.com/1000x700/666/ccc">
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="title">中青宝致歉:将严格执行劳动法</div>
+                            <div class="desc">10k reads  1k comments</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side-bar-card">
+            <div class="card-title">Current Events</div>
+            <div class="card-body">
+                <div class="list">
+                    <div class="item">
+                        <div class="title">倒塌事故第6名被困人员获救</div>
+                        <div class="desc">15k reads  2k comments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
