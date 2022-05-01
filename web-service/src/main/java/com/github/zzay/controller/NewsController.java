@@ -157,8 +157,8 @@ public class NewsController {
      * @return Audit page
      * @throws SystemException
      */
-    @PreAuthorize("hasAuthority('system:admin')")
     @GetMapping("/audit/{id}")
+    @PreAuthorize("hasAuthority('system:admin')")
     @Operation(summary = "审核新闻", description = "审核新闻：用户通过点击审核新闻页面，审核对应的新闻", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
     public String auditNews(@Parameter(name = "model") Model model,
                               @Parameter(name = "id") @PathVariable int id) throws SystemException {
@@ -193,6 +193,5 @@ public class NewsController {
         model.addAttribute("page", newsService.getPublishedPageCount());
         return "management";
     }
-
 
 }

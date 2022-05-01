@@ -42,7 +42,8 @@ public class UserController {
     @PostMapping("/register")
     @PreAuthorize("isAnonymous()")
     @Operation(summary = "用户注册", description = "用户注册：用户通过注册表单输入用户名和密码，执行注册操作", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
-    public String register(@Parameter(name = "model") Model model, @Parameter(name = "userDto") UserDto userDto) {
+    public String register(@Parameter(name = "model") Model model,
+                           @Parameter(name = "userDto") UserDto userDto) {
         // check whether the username has been used or not
         if (userService.register(userDto)) {
             return "login";

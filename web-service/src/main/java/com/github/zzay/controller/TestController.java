@@ -45,7 +45,7 @@ public class TestController {
      */
     @GetMapping("/secured")
     @Secured({"ROLE_admin"})
-    @Operation(summary = "测试@Secured注解功能", description = "测试@Secured注解功能：说明问当前URL地址所需要的角色", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
+    @Operation(summary = "测试@Secured注解功能", description = "测试@Secured注解功能：说明当前URL地址所需要的角色", security = @SecurityRequirement(name = HttpHeaders.AUTHORIZATION))
     public String testSecured() {
         return "test Secured";
     }

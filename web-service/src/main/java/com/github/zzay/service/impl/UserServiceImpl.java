@@ -37,6 +37,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // get username and password
         String username = userDto.getUsername();
         String password = userDto.getPassword();
+        System.out.println(username);
+        System.out.println(password);
         // check whether the username has been user or not
         User user = userMapper.selectByUsername(username);
         if (user != null) {
